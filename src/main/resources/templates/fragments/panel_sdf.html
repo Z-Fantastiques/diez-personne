@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen" />
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
+              th:href="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"
+              rel="stylesheet" media="screen" />
+        <link href="/static/css/header.css" th:href="@{/css/header.css}" rel="stylesheet" media="screen" />
+        <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+                th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+    </head>
+    <body>
+
+        <!-- Panel Stade de France -->
+        <div class="panel panel-default" th:fragment="panel_sdf">
+            <ul class="list-group">
+                <div class="bg-div" style="background-image: url(http://www.capital.fr/var/cap/storage/images/media/images/photo-v2-457x222/rea/stade-de-france-c-laurent-grandguillot/9513823-1-fre-FR/stade-de-france-c-laurent-grandguillot.jpg);"></div>
+                <li class="list-group-item">
+                    <p class="text-center"><strong>Stade de France</strong></p>
+                    <p class="text-center">C'est ici qu'est né la légende que l'on connaît tous, le ZZ.</p>
+                </li>
+            </ul>
+        </div>
+
+    </body>
+</html>

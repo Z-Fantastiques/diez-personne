@@ -1,0 +1,10 @@
+.panel .list-group-item {
+    padding: 20px;
+}
+
+.bg-div {
+    background-size: cover;
+    height: 150px;
+    background: no-repeat center;
+    -webkit-background-size: cover;
+}
