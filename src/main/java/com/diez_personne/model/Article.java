@@ -1,6 +1,9 @@
 package com.diez_personne.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
+
 
 /**
  * Created by linard_f on 1/27/16.
@@ -19,6 +22,14 @@ public class Article {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(nullable = false, columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private Timestamp date;
+
+    @PrePersist
+    private void onCreate() {
+        setDate(new Timestamp(new Date().getTime()));
+    }
 
     public Article() {
 
@@ -51,4 +62,13 @@ public class Article {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
+
 }
