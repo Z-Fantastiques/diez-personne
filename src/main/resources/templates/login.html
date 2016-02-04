@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Stade de France</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen" />
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
+              th:href="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"
+              rel="stylesheet" media="screen" />
+        <link href="/static/css/common.css" th:href="@{/css/common.css}" rel="stylesheet" media="screen" />
+        <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+                th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+    </head>
+    <body>
+        <div class="container">
+            <form th:action="@{/login}" method="post" role="form">
+                <legend>Connectez-vous !</legend>
+                <div class="form-group">
+                    <label for="name">Login</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="login" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder="password" />
+                </div>
+                <span th:if="${param.error}" class="text-danger">Mot de passe invalide</span>
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </form>
+        </div>
+    </body>
+</html>
