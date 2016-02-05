@@ -14,20 +14,46 @@
                 th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
     </head>
     <body>
-        <div class="container">
-            <form th:action="@{/login}" method="post" role="form">
-                <legend>Connectez-vous !</legend>
-                <div class="form-group">
-                    <label for="name">Login</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="login" />
+        <div class="container vertical-center">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Connectez-vous !</strong>
+                        </div>
+                        <div class="panel-body">
+                            <form th:action="@{/login}" method="post" role="form">
+                                <fieldset>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-10  col-md-offset-1 ">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-user"></i>
+                                                    </span>
+                                                    <input type="text" class="form-control" name="name" id="name" placeholder="login" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-lock"></i>
+                                                    </span>
+                                                    <input type="password" class="form-control" name="password" id="password" placeholder="password" />
+                                                </div>
+                                            </div>
+                                            <p th:if="${param.error}" class="text-danger">Mot de passe invalide</p>
+                                            <div class="form-group">
+                                                <input type="submit" class="btn btn-lg btn-primary btn-block" value="Brossage" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="password" />
-                </div>
-                <span th:if="${param.error}" class="text-danger">Mot de passe invalide</span>
-                <button type="submit" class="btn btn-primary">Log In</button>
-            </form>
+            </div>
         </div>
     </body>
 </html>
