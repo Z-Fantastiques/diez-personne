@@ -30,6 +30,20 @@
                 <div class="col-md-7">
                     <div class="panel panel-default">
                         <ul class="list-group">
+                            <li class="list-group-item">
+                                <form action="" method="post" role="form">
+                                    <div class="input-group">
+                                        <label class="sr-only" for="message">label</label>
+                                        <input type="text" class="form-control" name="message" id="message" placeholder="Message" />
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-search"><i class="glyphicon glyphicon-envelope"></i></button>
+                                        </span>
+                                    </div>
+                                </form>
+                            </li>
+
+
+                            <!-- News List loop -->
                             <li th:each="article : ${user.articles}" class="list-group-item">
                                 <div class="media">
                                     <div class="pull-left">
