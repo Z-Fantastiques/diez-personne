@@ -8,10 +8,11 @@ import com.diez_personne.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 /**
@@ -35,7 +36,10 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String createNews(@ModelAttribute Article article, Model model) {
+    public String createNews(@Valid Article article, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "index";
+        }
         article.setUser(userRepository.findByName(SecurityUtils.getCurrentLogin()).get());
         articleRepository.save(article);
         return "redirect:/";

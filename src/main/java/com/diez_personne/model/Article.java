@@ -1,6 +1,8 @@
 package com.diez_personne.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -16,7 +18,9 @@ public class Article {
     @GeneratedValue
     private Long id;
 
+    @NotNull
     @Column(nullable = false)
+    @Size(min = 1)
     private String content;
 
     @ManyToOne
