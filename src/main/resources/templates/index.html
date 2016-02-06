@@ -30,6 +30,20 @@
                 <div class="col-md-7">
                     <div class="panel panel-default">
                         <ul class="list-group">
+                            <li class="list-group-item">
+                                <form action="" th:action="@{/}" th:object="${article}" method="post" role="form">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" th:field="*{content}" placeholder="Message" required="required" />
+                                        <span class="input-group-btn">
+                                            <button type="submit" class="btn btn-search"><i class="glyphicon glyphicon-envelope"></i></button>
+                                        </span>
+                                    </div>
+                                    <span class="text-danger" th:if="${#fields.hasErrors('content')}">Le contenu du message ne peut être vide.</span>
+                                </form>
+                            </li>
+
+
+                             <!--News List loop -->
                             <li th:each="article : ${user.articles}" class="list-group-item">
                                 <div class="media">
                                     <div class="pull-left">
