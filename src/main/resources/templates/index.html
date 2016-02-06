@@ -30,7 +30,8 @@
                 <div class="col-md-7">
                     <div class="panel panel-default">
                         <ul class="list-group">
-                            <li class="list-group-item">
+                            <!--This block is used to add a message-->
+                            <li class="list-group-item" sec:authorize="hasRole('ROLE_ADMIN')">
                                 <form action="" th:action="@{/}" th:object="${article}" method="post" role="form">
                                     <div class="input-group">
                                         <input type="text" class="form-control" th:field="*{content}" placeholder="Message" required="required" />
@@ -44,7 +45,7 @@
 
 
                              <!--News List loop -->
-                            <li th:each="article : ${user.articles}" class="list-group-item">
+                            <li th:each="article : ${articles}" class="list-group-item">
                                 <div class="media">
                                     <div class="pull-left">
                                         <a href="#"><img src="/static/images/zidane_mango_rire_croped.jpg" th:src="@{/images/zidane_mango_rire_croped.jpg}" width="65" class="img-circle media-object" /></a>
@@ -52,8 +53,8 @@
                                     <div class="media-body">
                                         <p class="media-heading">
                                             <strong>
-                                                <span class="text-capitalize" th:text="${user.firstName}">First Name</span>
-                                                <span class="text-capitalize" th:text="${user.lastName}">Last Name</span>
+                                                <span class="text-capitalize" th:text="${article.user.firstName}">First Name</span>
+                                                <span class="text-capitalize" th:text="${article.user.lastName}">Last Name</span>
                                             </strong>
                                         </p>
                                         <span th:text="${article.content}"></span>

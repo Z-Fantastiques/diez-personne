@@ -11,5 +11,6 @@ import java.util.List;
 public interface ArticleRepository extends CrudRepository<Article, Long> {
 
     List<Article> findByUserName(String name);
+    List<Article> findAllByOrderByDateDesc();
 
 }
