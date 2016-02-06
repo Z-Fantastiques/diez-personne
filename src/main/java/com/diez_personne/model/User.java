@@ -39,6 +39,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OrderBy("date DESC")
     private Set<Article> articles;
 
     @ManyToMany
