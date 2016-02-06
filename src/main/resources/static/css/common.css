@@ -2,9 +2,22 @@
     padding: 20px;
 }
 
+/*
+ * Background for the stade de france
+ */
 .bg-div {
     background-size: cover;
     height: 150px;
     background: no-repeat center;
     -webkit-background-size: cover;
+}
+
+/*
+ * Vertical center for a block
+ */
+.vertical-center {
+    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
