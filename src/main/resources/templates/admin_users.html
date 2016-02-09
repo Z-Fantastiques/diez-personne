@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <title>Stade de France</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+              th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+              rel="stylesheet" media="screen" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+        <link href="/static/css/header.css" th:href="@{/css/header.css}" rel="stylesheet" media="screen" />
+        <link href="/static/css/common.css" th:href="@{/css/common.css}" rel="stylesheet" media="screen" />
+        <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+                th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+        <script href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
+                th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+    </head>
+    <body>
+        <!-- Header -->
+        <div th:replace="fragments/header :: header"></div>
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-md-3">
+                    <!-- Fragment bloc admin -->
+                    <div th:replace="fragments/panel_admin :: panel_admin"></div>
+                    <!-- Fragment bloc stade de france -->
+                    <div th:replace="fragments/panel_sdf :: panel_sdf"></div>
+                </div>
+
+                <!-- User's block -->
+                <div class="col-md-7">
+                    <div class="panel panel-default">
+                        <ul class="list-group">
+                            <!--This block is used to manage the user list -->
+                            <li class="list-group-item">
+                                <h4>Administration des utilisateurs</h4>
+                                <hr />
+
+                                <!--Alert error message block-->
+                                <div th:if="${error}" class="alert alert-danger alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert"><span
+                                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                    <strong>Attention !</strong> <span th:text="${error}"></span>
+                                </div>
+
+                                <div class="btn-toolbar" role="toolbar">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#user-modal"><i class="fa fa-user-plus"></i> ajouter</button>
+                                    </div>
+                                </div>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Prénom</th>
+                                            <th>Nom</th>
+                                            <th>Login</th>
+                                            <th style="width: 43px;"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="user : ${users}">
+                                            <td class="text-capitalize" th:text="${user.firstName}">First Name</td>
+                                            <td class="text-capitalize" th:text="${user.lastName}">LastName</td>
+                                            <td th:text="${user.name}">Login</td>
+                                            <td>
+                                                <a href="#"><i class="fa fa-pencil text-muted"></i></a>
+                                                <a href="#"><i class="fa fa-trash text-muted"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--Modal-->
+                <div class="modal fade" id="user-modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                <h4 class="modal-title">Utilisateur</h4>
+                            </div>
+
+                            <div class="modal-body">
+                                <form action="" th:action="@{/users}"  th:object="${user}" method="post" role="form">
+                                    <div class="form-group">
+                                        <label for="login">Login</label>
+                                        <input type="text" class="form-control" th:field="*{name}" id="login" placeholder="Login" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="first-name">Prénom</label>
+                                        <input type="text" class="form-control" th:field="*{firstName}" id="first-name" placeholder="Prénom" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last-name">Nom</label>
+                                        <input type="text" class="form-control" th:field="*{lastName}" id="last-name" placeholder="Nom" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Mot de passe</label>
+                                        <input type="text" class="form-control" th:field="*{password}" id="password" placeholder="Mot de passe" />
+                                    </div>
+                                    <input type="submit" id="submit" class="hidden" />
+                                </form>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                <label type="button" class="btn btn-primary" for="submit">Enregistrer</label>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                </div><!-- /.modal -->
+
+            </div>
+        </div>
+    </body>
+</html>

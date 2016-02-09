@@ -12,6 +12,7 @@
         <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
               th:href="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"
               rel="stylesheet" media="screen" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
         <link href="/static/css/header.css" th:href="@{/css/header.css}" rel="stylesheet" media="screen" />
         <link href="/static/css/common.css" th:href="@{/css/common.css}" rel="stylesheet" media="screen" />
         <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
@@ -22,7 +23,12 @@
         <div th:replace="fragments/header :: header"></div>
         <div class="container">
             <div class="row">
+
+
                 <div class="col-md-3">
+                    <!-- Fragment bloc admin -->
+                    <div th:replace="fragments/panel_admin :: panel_admin"></div>
+                    <!-- Fragment bloc stade de france -->
                     <div th:replace="fragments/panel_sdf :: panel_sdf"></div>
                 </div>
 
