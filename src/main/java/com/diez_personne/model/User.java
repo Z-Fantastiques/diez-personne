@@ -18,16 +18,18 @@ public class User {
     private int id;
 
     @NotNull
-    @Column(length = 50, nullable = true, unique = true)
+    @Column(length = 50, nullable = false, unique = true)
     @Size(min = 1, max = 50)
     private String name;
 
-    @Size(max = 50)
-    @Column(name = "first_name", length = 50)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
 
-    @Size(max = 50)
-    @Column(name = "last_name", length = 50)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
     @Column(nullable = true)
@@ -35,7 +37,7 @@ public class User {
 
     @NotNull
     @Size(min = 60, max = 60)
-    @Column(nullable = true)
+    @Column(nullable = false, length = 60)
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

@@ -35,7 +35,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String createNews(@Valid Article article, BindingResult bindingResult, Model model) {
+    public String createNews(@Valid Article article, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "index";
         }
